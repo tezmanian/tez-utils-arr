@@ -2,6 +2,7 @@
     "name": "tez/utils-arr",
     "type": "library",
     "description": "Array utility helpers",
+    "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -16,13 +17,7 @@
     "repositories": [
         {
              "type": "git",
-             "url": "https://gitea.root-zone.info/Development/tez-utils-enum.git",
-             "priority": 100
-        },
-        {
-             "type": "git",
-             "url": "https://github.com/tezmanian/tez-utils-enum.git",
-             "priority": 50
+             "url": "https://github.com/tezmanian/tez-utils-enum.git"
         }
     ],
     "require": {

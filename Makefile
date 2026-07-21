@@ -8,7 +8,7 @@ build:
 
 ## Install Composer dependencies
 install:
-	$(PHP) composer install
+	$(PHP) composer install 
 
 ## Run unit tests
 test:
