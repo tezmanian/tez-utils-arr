@@ -5,7 +5,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
-      - ../tez-utils-enum:/packages/tez-utils-enum
       - composer-cache:/tmp/composer
     user: "${UID:-1000}:${GID:-1000}"
     environment:

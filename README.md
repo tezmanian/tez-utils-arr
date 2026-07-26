@@ -1,11 +1,6 @@
-# tez/utils-arr
+# tez-utils-arr
 
 A collection of focused, stateless array utility classes for PHP 8.3+. Each class does one thing and exposes a clean static API.
-
-## Requirements
-
-- PHP 8.3+
-- [`tez/utils-enum`](https://github.com/tezmanian/tez-utils-enum)
 
 ## Installation
 
@@ -13,9 +8,32 @@ A collection of focused, stateless array utility classes for PHP 8.3+. Each clas
 composer require tez/utils-arr
 ```
 
-## Usage
+## Components
 
-### ArrayDiff
+| Class | Purpose |
+|-------|---------|
+| `ArrayDiff` | Recursively compares two arrays and returns all differences with dot-notation paths |
+| `CartesianProduct` | Computes the Cartesian product of any number of sets lazily via a Generator |
+| `DeepMerge` | Recursively merges override arrays into a base array |
+| `Find` | Returns the first or last item matching a predicate |
+| `Flatten` | Flattens a nested array into a single list |
+| `GroupBy` | Groups items by a key derived from a callback |
+| `KeyBy` | Builds an associative lookup map from a list |
+| `MapWithKeys` | Maps over an array where the callback returns a `[key => value]` pair |
+| `Paginator` | Paginates an array and returns an immutable `Page` with slice and metadata |
+| `Partition` | Splits an array into two lists in a single pass |
+| `Pluck` | Extracts values from an array of records using dot-notation keys |
+| `SafeGet` | Safely reads typed values from deeply nested arrays using dot-notation paths |
+| `Sliding` | Produces consecutive overlapping windows of a fixed size |
+| `SortBy` | Sorts a copy of the array by a derived key |
+| `Transpose` | Swaps rows and columns of a 2D array |
+| `UniqueBy` | Removes duplicates where uniqueness is determined by a callback |
+| `Wrap` | Ensures any value is an array |
+| `Zip` | Combines multiple arrays element-by-element into a list of tuples |
+
+---
+
+## ArrayDiff
 
 Recursively compares two arrays and returns all differences with dot-notation paths.
 
@@ -43,7 +61,7 @@ Comparison is strict (`1 !== "1"`). Keys are reported as `ChangeType::Added`, `C
 
 ---
 
-### CartesianProduct
+## CartesianProduct
 
 Computes the Cartesian product of any number of sets lazily via a Generator.
 
@@ -59,7 +77,7 @@ No intermediate array is built — suitable for large input sets.
 
 ---
 
-### DeepMerge
+## DeepMerge
 
 Recursively merges override arrays into a base array. Multiple overrides are applied left to right.
 
@@ -77,7 +95,7 @@ String keys are merged recursively when both sides are arrays. Integer keys are 
 
 ---
 
-### Find
+## Find
 
 Returns the first or last item matching a predicate.
 
@@ -91,20 +109,20 @@ $last  = Find::last($users,  fn($u) => $u['active']);
 
 ---
 
-### Flatten
+## Flatten
 
 Flattens a nested array into a single list. Accepts an optional depth limit.
 
 ```php
 use Tez\Utils\Arr\Flatten;
 
-Flatten::flatten([1, [2, [3, 4]]]);        // [1, 2, 3, 4]
+Flatten::flatten([1, [2, [3, 4]]]);           // [1, 2, 3, 4]
 Flatten::flatten([1, [2, [3, 4]]], depth: 1); // [1, 2, [3, 4]]
 ```
 
 ---
 
-### GroupBy
+## GroupBy
 
 Groups items by a key derived from a callback.
 
@@ -117,7 +135,7 @@ $grouped = GroupBy::group($orders, fn($o) => $o['status']);
 
 ---
 
-### KeyBy
+## KeyBy
 
 Builds an associative lookup map from a list. When two items produce the same key, the last wins.
 
@@ -130,7 +148,7 @@ $byId = KeyBy::index($users, fn($u) => $u['id']);
 
 ---
 
-### MapWithKeys
+## MapWithKeys
 
 Maps over an array where the callback returns a `[key => value]` pair.
 
@@ -143,7 +161,7 @@ $result = MapWithKeys::map($products, fn($p) => [$p['sku'] => $p['price']]);
 
 ---
 
-### Paginator
+## Paginator
 
 Paginates an array and returns an immutable `Page` with slice and metadata.
 
@@ -164,7 +182,7 @@ Throws `InvalidArgumentException` when `$page < 1` or `$perPage < 1`.
 
 ---
 
-### Partition
+## Partition
 
 Splits an array into two lists in a single pass — items passing the predicate first, failing items second.
 
@@ -176,7 +194,7 @@ use Tez\Utils\Arr\Partition;
 
 ---
 
-### Pluck
+## Pluck
 
 Extracts values from an array of records using dot-notation keys.
 
@@ -198,7 +216,7 @@ Items where the key is absent are silently skipped.
 
 ---
 
-### SafeGet
+## SafeGet
 
 Safely reads typed values from deeply nested arrays using dot-notation paths. Returns `null` (or a default) when any segment is missing.
 
@@ -218,7 +236,7 @@ Integer-looking segments (e.g. `"0"`) address list indices automatically.
 
 ---
 
-### Sliding
+## Sliding
 
 Produces consecutive overlapping windows of a fixed size.
 
@@ -234,7 +252,7 @@ Sliding::window([1, 2, 3, 4, 5], size: 3, step: 2);
 
 ---
 
-### SortBy
+## SortBy
 
 Sorts a copy of the array by a derived key. Never mutates the original. Result is always re-indexed.
 
@@ -247,7 +265,7 @@ $desc   = SortBy::sort($products, fn($p) => $p['price'], descending: true);
 
 ---
 
-### Transpose
+## Transpose
 
 Swaps rows and columns of a 2D array. All rows must have the same column count.
 
@@ -260,7 +278,7 @@ Transpose::matrix([[1, 2, 3], [4, 5, 6]]);
 
 ---
 
-### UniqueBy
+## UniqueBy
 
 Removes duplicates where uniqueness is determined by a callback.
 
@@ -279,7 +297,7 @@ UniqueBy::filter($items, fn($i) => $i['email'], preserveKeys: true);
 
 ---
 
-### Wrap
+## Wrap
 
 Ensures any value is an array. `null` becomes `[]`, arrays pass through, everything else gets wrapped.
 
@@ -293,7 +311,7 @@ Wrap::ensure([1, 2]);  // [1, 2]
 
 ---
 
-### Zip
+## Zip
 
 Combines multiple arrays element-by-element into a list of tuples.
 
@@ -311,14 +329,11 @@ Zip::shortest([1, 2, 3], ['a', 'b']);
 
 ---
 
-## Development
+## Requirements
 
-```bash
-make install   # install dependencies
-make test      # run PHPUnit
-make phpstan   # static analysis
-make cs-fix    # auto-fix code style
-make cs-check  # check code style (dry-run)
-make audit     # check for known vulnerabilities
-make ci        # run all checks (same as CI)
-```
+- PHP 8.3+
+- `tez/utils-enum` ^1.0
+
+## License
+
+MIT
