@@ -1,7 +1,7 @@
 {
     "name": "tez/utils-arr",
     "type": "library",
-    "description": "Array utility helpers",
+    "description": "A set of focused PHP array utilities: grouping, pagination, diffing, sorting, partitioning, flattening, cartesian products, and more — PHP 8.3+, no framework required.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -16,7 +16,7 @@
     "repositories": [
   	{
              "type": "git",
-             "url": "https://gitea.root-zone.info/Development/tez-utils-enum.git"
+             "url": "https://gitea.root-zone.info/tez/tez-utils-enum.git"
         },
         {
              "type": "git",
