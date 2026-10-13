@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Arr;
+namespace Tezmanian\Utils\Arr;
 
 /**
  * Computes the Cartesian product of any number of sets lazily via a Generator.

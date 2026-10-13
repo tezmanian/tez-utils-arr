@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Arr;
+namespace Tezmanian\Utils\Arr;
 
 /**
  * Safely read deeply nested values from an array using dot-notation paths.

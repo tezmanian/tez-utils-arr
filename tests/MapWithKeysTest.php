@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Tests\Arr;
+namespace Tezmanian\Utils\Tests\Arr;
 
 use PHPUnit\Framework\TestCase;
-use Tez\Utils\Arr\MapWithKeys;
+use Tezmanian\Utils\Arr\MapWithKeys;
 
 final class MapWithKeysTest extends TestCase
 {

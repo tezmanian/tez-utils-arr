@@ -1,31 +1,38 @@
 {
-    "name": "tez/utils-arr",
+    "name": "tezmanian/utils-arr",
     "type": "library",
     "description": "A set of focused PHP array utilities: grouping, pagination, diffing, sorting, partitioning, flattening, cartesian products, and more — PHP 8.3+, no framework required.",
+    "keywords": [
+        "array",
+        "collection",
+        "utilities",
+        "php"
+    ],
+    "homepage": "https://github.com/tezmanian/tez-utils-arr",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "René Halberstadt",
+            "email": "tezmanian@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/tezmanian/tez-utils-arr/issues",
+        "source": "https://github.com/tezmanian/tez-utils-arr"
+    },
     "autoload": {
         "psr-4": {
-            "Tez\\Utils\\Arr\\": "src/"
+            "Tezmanian\\Utils\\Arr\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tez\\Utils\\Tests\\Arr\\": "tests/"
+            "Tezmanian\\Utils\\Tests\\Arr\\": "tests/"
         }
     },
-    "repositories": [
-  	{
-             "type": "git",
-             "url": "https://gitea.root-zone.info/tez/tez-utils-enum.git"
-        },
-        {
-             "type": "git",
-             "url": "https://github.com/tezmanian/tez-utils-enum.git"
-        }
-    ],
     "require": {
         "php": ">=8.3",
-        "tez/utils-enum": "^1.0"
+        "tezmanian/utils-enum": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.0",

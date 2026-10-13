@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Arr;
+namespace Tezmanian\Utils\Arr;
 
-use Tez\Utils\Enum\BackedEnumTrait;
+use Tezmanian\Utils\Enum\BackedEnumTrait;
 
 /**
  * Classifies the type of a single difference detected by ArrayDiff.

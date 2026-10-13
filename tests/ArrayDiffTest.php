@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Tests\Arr;
+namespace Tezmanian\Utils\Tests\Arr;
 
 use PHPUnit\Framework\TestCase;
-use Tez\Utils\Arr\ArrayDiff;
-use Tez\Utils\Arr\ChangeType;
-use Tez\Utils\Arr\DiffResult;
+use Tezmanian\Utils\Arr\ArrayDiff;
+use Tezmanian\Utils\Arr\ChangeType;
+use Tezmanian\Utils\Arr\DiffResult;
 
 final class ArrayDiffTest extends TestCase
 {

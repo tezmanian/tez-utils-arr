@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Arr;
+namespace Tezmanian\Utils\Arr;
 
 /**
  * Immutable result of a paginated array slice.

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Tests\Arr;
+namespace Tezmanian\Utils\Tests\Arr;
 
 use PHPUnit\Framework\TestCase;
-use Tez\Utils\Arr\Wrap;
+use Tezmanian\Utils\Arr\Wrap;
 
 final class WrapTest extends TestCase
 {

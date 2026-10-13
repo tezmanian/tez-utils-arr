@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Arr;
+namespace Tezmanian\Utils\Arr;
 
 final class MapWithKeys
 {

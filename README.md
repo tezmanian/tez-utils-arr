@@ -1,12 +1,19 @@
 # tez-utils-arr
 
+[![CI](https://github.com/tezmanian/tez-utils-arr/actions/workflows/php.yml/badge.svg)](https://github.com/tezmanian/tez-utils-arr/actions/workflows/php.yml)
+[![Packagist Version](https://img.shields.io/packagist/v/tezmanian/utils-arr)](https://packagist.org/packages/tezmanian/utils-arr)
+[![PHP](https://img.shields.io/packagist/php-v/tezmanian/utils-arr)](https://packagist.org/packages/tezmanian/utils-arr)
+[![License: MIT](https://img.shields.io/packagist/l/tezmanian/utils-arr)](LICENSE)
+
 A collection of focused, stateless array utility classes for PHP 8.3+. Each class does one thing and exposes a clean static API.
 
 ## Installation
 
 ```bash
-composer require tez/utils-arr
+composer require tezmanian/utils-arr
 ```
+
+Package: [`tezmanian/utils-arr`](https://packagist.org/packages/tezmanian/utils-arr) · Namespace: `Tezmanian\Utils\Arr`
 
 ## Components
 
@@ -38,7 +45,7 @@ composer require tez/utils-arr
 Recursively compares two arrays and returns all differences with dot-notation paths.
 
 ```php
-use Tez\Utils\Arr\ArrayDiff;
+use Tezmanian\Utils\Arr\ArrayDiff;
 
 $result = ArrayDiff::compare(
     ['user' => ['name' => 'Alice', 'age' => 30]],
@@ -66,7 +73,7 @@ Comparison is strict (`1 !== "1"`). Keys are reported as `ChangeType::Added`, `C
 Computes the Cartesian product of any number of sets lazily via a Generator.
 
 ```php
-use Tez\Utils\Arr\CartesianProduct;
+use Tezmanian\Utils\Arr\CartesianProduct;
 
 foreach (CartesianProduct::create(['S', 'M', 'L'], ['red', 'blue']) as $tuple) {
     // ['S', 'red'], ['S', 'blue'], ['M', 'red'], ...
@@ -82,7 +89,7 @@ No intermediate array is built — suitable for large input sets.
 Recursively merges override arrays into a base array. Multiple overrides are applied left to right.
 
 ```php
-use Tez\Utils\Arr\DeepMerge;
+use Tezmanian\Utils\Arr\DeepMerge;
 
 $result = DeepMerge::merge(
     ['db' => ['host' => 'localhost', 'port' => 3306]],
@@ -100,7 +107,7 @@ String keys are merged recursively when both sides are arrays. Integer keys are 
 Returns the first or last item matching a predicate.
 
 ```php
-use Tez\Utils\Arr\Find;
+use Tezmanian\Utils\Arr\Find;
 
 $first = Find::first($users, fn($u) => $u['active']);
 $last  = Find::last($users,  fn($u) => $u['active']);
@@ -114,7 +121,7 @@ $last  = Find::last($users,  fn($u) => $u['active']);
 Flattens a nested array into a single list. Accepts an optional depth limit.
 
 ```php
-use Tez\Utils\Arr\Flatten;
+use Tezmanian\Utils\Arr\Flatten;
 
 Flatten::flatten([1, [2, [3, 4]]]);           // [1, 2, 3, 4]
 Flatten::flatten([1, [2, [3, 4]]], depth: 1); // [1, 2, [3, 4]]
@@ -127,7 +134,7 @@ Flatten::flatten([1, [2, [3, 4]]], depth: 1); // [1, 2, [3, 4]]
 Groups items by a key derived from a callback.
 
 ```php
-use Tez\Utils\Arr\GroupBy;
+use Tezmanian\Utils\Arr\GroupBy;
 
 $grouped = GroupBy::group($orders, fn($o) => $o['status']);
 // ['pending' => [...], 'shipped' => [...]]
@@ -140,7 +147,7 @@ $grouped = GroupBy::group($orders, fn($o) => $o['status']);
 Builds an associative lookup map from a list. When two items produce the same key, the last wins.
 
 ```php
-use Tez\Utils\Arr\KeyBy;
+use Tezmanian\Utils\Arr\KeyBy;
 
 $byId = KeyBy::index($users, fn($u) => $u['id']);
 // [42 => $user, 99 => $user, ...]
@@ -153,7 +160,7 @@ $byId = KeyBy::index($users, fn($u) => $u['id']);
 Maps over an array where the callback returns a `[key => value]` pair.
 
 ```php
-use Tez\Utils\Arr\MapWithKeys;
+use Tezmanian\Utils\Arr\MapWithKeys;
 
 $result = MapWithKeys::map($products, fn($p) => [$p['sku'] => $p['price']]);
 // ['ABC-1' => 9.99, 'XYZ-2' => 4.49]
@@ -166,7 +173,7 @@ $result = MapWithKeys::map($products, fn($p) => [$p['sku'] => $p['price']]);
 Paginates an array and returns an immutable `Page` with slice and metadata.
 
 ```php
-use Tez\Utils\Arr\Paginator;
+use Tezmanian\Utils\Arr\Paginator;
 
 $page = Paginator::paginate($items, page: 2, perPage: 15);
 
@@ -187,7 +194,7 @@ Throws `InvalidArgumentException` when `$page < 1` or `$perPage < 1`.
 Splits an array into two lists in a single pass — items passing the predicate first, failing items second.
 
 ```php
-use Tez\Utils\Arr\Partition;
+use Tezmanian\Utils\Arr\Partition;
 
 [$active, $inactive] = Partition::by($users, fn($u) => $u['active']);
 ```
@@ -199,7 +206,7 @@ use Tez\Utils\Arr\Partition;
 Extracts values from an array of records using dot-notation keys.
 
 ```php
-use Tez\Utils\Arr\Pluck;
+use Tezmanian\Utils\Arr\Pluck;
 
 // Extract a single column
 Pluck::values($users, 'name'); // ['Alice', 'Bob', ...]
@@ -221,7 +228,7 @@ Items where the key is absent are silently skipped.
 Safely reads typed values from deeply nested arrays using dot-notation paths. Returns `null` (or a default) when any segment is missing.
 
 ```php
-use Tez\Utils\Arr\SafeGet;
+use Tezmanian\Utils\Arr\SafeGet;
 
 $data = ['chart' => ['result' => [['meta' => ['currency' => 'EUR']]]]];
 
@@ -241,7 +248,7 @@ Integer-looking segments (e.g. `"0"`) address list indices automatically.
 Produces consecutive overlapping windows of a fixed size.
 
 ```php
-use Tez\Utils\Arr\Sliding;
+use Tezmanian\Utils\Arr\Sliding;
 
 Sliding::window([1, 2, 3, 4, 5], size: 3);
 // [[1,2,3], [2,3,4], [3,4,5]]
@@ -257,7 +264,7 @@ Sliding::window([1, 2, 3, 4, 5], size: 3, step: 2);
 Sorts a copy of the array by a derived key. Never mutates the original. Result is always re-indexed.
 
 ```php
-use Tez\Utils\Arr\SortBy;
+use Tezmanian\Utils\Arr\SortBy;
 
 $sorted = SortBy::sort($products, fn($p) => $p['price']);
 $desc   = SortBy::sort($products, fn($p) => $p['price'], descending: true);
@@ -270,7 +277,7 @@ $desc   = SortBy::sort($products, fn($p) => $p['price'], descending: true);
 Swaps rows and columns of a 2D array. All rows must have the same column count.
 
 ```php
-use Tez\Utils\Arr\Transpose;
+use Tezmanian\Utils\Arr\Transpose;
 
 Transpose::matrix([[1, 2, 3], [4, 5, 6]]);
 // [[1, 4], [2, 5], [3, 6]]
@@ -283,7 +290,7 @@ Transpose::matrix([[1, 2, 3], [4, 5, 6]]);
 Removes duplicates where uniqueness is determined by a callback.
 
 ```php
-use Tez\Utils\Arr\UniqueBy;
+use Tezmanian\Utils\Arr\UniqueBy;
 
 // Keep first occurrence (default)
 UniqueBy::filter($items, fn($i) => $i['email']);
@@ -302,7 +309,7 @@ UniqueBy::filter($items, fn($i) => $i['email'], preserveKeys: true);
 Ensures any value is an array. `null` becomes `[]`, arrays pass through, everything else gets wrapped.
 
 ```php
-use Tez\Utils\Arr\Wrap;
+use Tezmanian\Utils\Arr\Wrap;
 
 Wrap::ensure(null);    // []
 Wrap::ensure('hello'); // ['hello']
@@ -316,7 +323,7 @@ Wrap::ensure([1, 2]);  // [1, 2]
 Combines multiple arrays element-by-element into a list of tuples.
 
 ```php
-use Tez\Utils\Arr\Zip;
+use Tezmanian\Utils\Arr\Zip;
 
 // Pad shorter arrays with null
 Zip::zip([1, 2, 3], ['a', 'b']);
@@ -332,8 +339,17 @@ Zip::shortest([1, 2, 3], ['a', 'b']);
 ## Requirements
 
 - PHP 8.3+
-- `tez/utils-enum` ^1.0
+- [`tezmanian/utils-enum`](https://packagist.org/packages/tezmanian/utils-enum) ^1.0
+
+## Development
+
+```bash
+make build && make install
+make ci   # audit, PHPStan, code style, tests
+```
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
+
+Author: René Halberstadt

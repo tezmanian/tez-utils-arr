@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tez\Utils\Tests\Arr;
+namespace Tezmanian\Utils\Tests\Arr;
 
 use PHPUnit\Framework\TestCase;
-use Tez\Utils\Arr\DeepMerge;
+use Tezmanian\Utils\Arr\DeepMerge;
 
 final class DeepMergeTest extends TestCase
 {
